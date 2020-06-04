@@ -57,47 +57,32 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
         return email
 
 
-# class World(models.Model):
-#     """Store information about user's current world"""
-#     user_profile = models.ForeignKey(
-#         settings.AUTH_USER_MODEL,
-#         on_delete=models.CASCADE
-#     )
-#     status_text = models.CharField(max_length=255)
-#     created_on = models.DateTimeField(auto_now_add=True)
-#     grid = None
-#     width = width
-#     height = height
-#     x_UL = 0
-#     y_UL = 0
-#     x_LR = width
-#     y_LR = -height
+class Player(models.Model):
+    """Store information about user's position in the world'"""
+    user_profile = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE
+    )
+    created_on = models.DateTimeField(auto_now_add=True)
+    x = models.IntegerField(default=10)
+    y = models.IntegerField(default=0)
+    health = models.IntegerField(default=100)
 
-#     def __str__(self):
-#         """Return the model as a string"""
-#         return status_text
+    def __str__(self):
+        """Return the model as a string"""
+        return user_profile
 
 
-# class Player(models.Model):
-#     """Store information about user's position in the world'"""
-#     user_profile = models.ForeignKey(
-#         settings.AUTH_USER_MODEL,
-#         on_delete=models.CASCADE
-#     )
-#     status_text = models.CharField(max_length=255)
-#     created_on = models.DateTimeField(auto_now_add=True)
-
-#     id = id
-#     name = name
-#     description = description
-#     width = 1
-#     height = 1
-#     x_UL = x_UL
-#     y_UL = y_UL
-#     x_LR = x_LR
-#     y_LR = y_LR
-#     treasure = treasure
-
-#     def __str__(self):
-#         """Return the model as a string"""
-#         return status_text
+class World(models.Model):
+    """Store information about the world and its rooms"""
+    user_profile = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE
+    )
+    created_on = models.DateTimeField(auto_now_add=True)
+    width = models.IntegerField(default=25)
+    height = models.IntegerField(default=25)
+    x_UL = models.IntegerField(default=0)
+    y_UL = models.IntegerField(default=0)
+    x_LR = models.IntegerField(default=25)
+    y_LR = models.IntegerField(default=-25)
