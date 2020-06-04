@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from rvz_api import models
 
 
 class UserProfileSerializer(serializers.ModelSerializer):
