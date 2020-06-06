@@ -46,15 +46,15 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
 
     def get_full_name(self):
         """Retrieve full name of user"""
-        return name
+        return self.name
 
     def get_short_name(self):
         """Retrieve short name of user"""
-        return name
+        return self.name
 
     def __str__(self):
         """Return string representation of our user"""
-        return email
+        return self.email
 
 
 class Player(models.Model):
@@ -74,7 +74,7 @@ class Player(models.Model):
 
 
 class World(models.Model):
-    """Store information about the world and its rooms"""
+    """Store information about the world's size'"""
     user_profile = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE
