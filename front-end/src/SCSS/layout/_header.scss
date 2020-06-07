@@ -1,0 +1,14 @@
+.header {
+  height: 100px;
+  background-color: $color-primary;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .login {
+    color: $color-secondary;
+    margin-right: 100px;
+    font-family: "Iceland", cursive;
+    font-size: 3.6rem;
+  }
+}
