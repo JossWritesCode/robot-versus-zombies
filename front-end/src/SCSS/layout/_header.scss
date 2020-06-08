@@ -10,5 +10,8 @@
     margin-right: 100px;
     font-family: "Iceland", cursive;
     font-size: 3.6rem;
+    &:hover {
+      color: $color-white;
+    }
   }
 }
