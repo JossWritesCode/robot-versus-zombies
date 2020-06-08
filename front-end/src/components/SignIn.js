@@ -50,6 +50,9 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
     backgroundColor: theme.palette.secondary.main,
   },
+  div: {
+    color: theme.palette.secondary.main,
+  },
 }));
 
 export default function SignIn() {
@@ -62,7 +65,7 @@ export default function SignIn() {
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
-        <Typography color="secondary" component="h1" variant="h5">
+        <Typography color="inherit" component="h1" variant="h5">
           Sign in
         </Typography>
         <form className={classes.form} noValidate>
@@ -104,14 +107,14 @@ export default function SignIn() {
           >
             Sign In
           </Button>
-          <Grid container>
+          <Grid color="secondary" container>
             <Grid item xs>
-              <Link href="#" variant="body2">
+              <Link color="inherit" href="#" variant="body2">
                 Forgot password?
               </Link>
             </Grid>
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link color="inherit" href="#" variant="body2">
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>
