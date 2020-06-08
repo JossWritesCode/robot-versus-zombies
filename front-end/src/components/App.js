@@ -1,12 +1,24 @@
 import React from "react";
-import Header from "./Header";
+import SignIn from "./SignIn";
 import Main from "./Main";
+import { BrowserRouter as Router } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
+import theme from "./ui/theme";
+import { ThemeProvider } from "@material-ui/core/styles";
 function App() {
   return (
-    <div className="app">
-      <Header />
-      <Main />
-    </div>
+    <Router>
+      <ThemeProvider theme={theme}>
+        <Switch>
+          <Route exact path="/">
+            <Main />
+          </Route>
+          <Route exact path="/signin">
+            <SignIn />
+          </Route>
+        </Switch>
+      </ThemeProvider>
+    </Router>
   );
 }
 
