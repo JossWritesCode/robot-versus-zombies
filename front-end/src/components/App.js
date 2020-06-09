@@ -1,5 +1,6 @@
 import React from "react";
 import SignIn from "./SignIn";
+import SignUp from "./SignUp";
 import Main from "./Main";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Switch, Route } from "react-router-dom";
@@ -15,6 +16,9 @@ function App() {
           </Route>
           <Route exact path="/signin">
             <SignIn />
+          </Route>
+          <Route exact path="/signup">
+            <SignUp />
           </Route>
         </Switch>
       </ThemeProvider>

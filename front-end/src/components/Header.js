@@ -5,7 +5,7 @@ function Header() {
   return (
     <div className="header">
       <Link to="/">
-        <img width="109" src={Logo} />
+        <img alt="logo" width="109" src={Logo} />
       </Link>
       <NavLink className="login" to="/signin">
         Sign in
