@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -13,7 +13,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Header from "./Header";
-
+import axios from "axios";
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -56,8 +56,26 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUp() {
+export default function SignUp(props) {
   const classes = useStyles();
+
+  const [profile, setProfile] = useState({});
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    axios
+      .post("http://localhost:8000/api/profile", profile)
+      .then((res) => {
+        console.log("posted");
+        props.history.push("/login");
+      })
+      .catch((error) => console.log(error.response));
+  };
+
+  const handleChange = (event) => {
+    event.preventDefault();
+    setProfile({ ...profile, [event.target.name]: event.target.value });
+  };
 
   return (
     <div className="signup-container">
@@ -71,31 +89,24 @@ export default function SignUp() {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <form className={classes.form} noValidate>
+          <form
+            onSubmit={(event) => handleSubmit(event)}
+            className={classes.form}
+            noValidate
+          >
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
                   autoComplete="fname"
-                  name="firstName"
+                  name="name"
                   variant="outlined"
                   required
                   fullWidth
-                  id="firstName"
+                  id="name"
                   label="First Name"
                   autoFocus
                   color="secondary"
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="lname"
-                  color="secondary"
+                  onChange={(event) => handleChange(event)}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -108,6 +119,7 @@ export default function SignUp() {
                   name="email"
                   autoComplete="email"
                   color="secondary"
+                  onChange={(event) => handleChange(event)}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -121,6 +133,7 @@ export default function SignUp() {
                   id="password"
                   autoComplete="current-password"
                   color="secondary"
+                  onChange={(event) => handleChange(event)}
                 />
               </Grid>
               <Grid item xs={12}>

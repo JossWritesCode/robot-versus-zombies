@@ -52,6 +52,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000',
+    'https://localhost:3000',
+    'localhost:3000',
+]
+
 ROOT_URLCONF = 'rvz_project.urls'
 
 TEMPLATES = [
