@@ -5,7 +5,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-import Link from "@material-ui/core/Link";
+import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
@@ -14,6 +14,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Header from "./Header";
 import axios from "axios";
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -64,7 +65,7 @@ export default function SignUp(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .post("http://localhost:8000/api/profile", profile)
+      .post("http://localhost:8000/api/profile/", profile)
       .then((res) => {
         console.log("posted");
         props.history.push("/login");
@@ -156,7 +157,7 @@ export default function SignUp(props) {
             </Button>
             <Grid container justify="flex-end">
               <Grid item>
-                <Link color="inherit" href="#" variant="body2">
+                <Link to="/signin" color="inherit" href="#" variant="body2">
                   Already have an account? Sign in
                 </Link>
               </Grid>

@@ -13,11 +13,11 @@ class UserProfileManager(BaseUserManager):
         if not email:
             raise ValueError('User must have an email address')
 
-        email = normalize_email(email)
-        user = model(email=email, name=name)
+        email = self.normalize_email(email)
+        user = self.model(email=email, name=name)
 
         user.set_password(password)
-        user.save(using=_db)
+        user.save(using=self._db)
 
         return user
 
@@ -27,7 +27,7 @@ class UserProfileManager(BaseUserManager):
 
         user.is_superuser = True
         user.is_staff = True
-        user.save(using=_db)
+        user.save(using=self._db)
 
         return user
 
