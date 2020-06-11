@@ -6,6 +6,9 @@ Post zombie apocalypse. You are a makeshift robot built out of a roomba, a webca
 
 - [React](https://reactjs.org/)
 - [Django](https://www.djangoproject.com/)
+- [SASS](https://sass-lang.com/)
+- [Material UI](https://material-ui.com/)
+
 
 ## Authors
 
